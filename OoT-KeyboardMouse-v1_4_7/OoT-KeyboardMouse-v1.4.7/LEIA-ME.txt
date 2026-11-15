@@ -1,0 +1,111 @@
+OOT (Switch 2) - Teclado e Mouse para o Lichii  (v1.4.7)
+========================================================
+
+Esta pasta tem TUDO. Escolha UM dos dois jeitos de instalar (os dois fazem a mesma coisa):
+
+  JEITO 1 - PROGRAMA (com janela, escolhe as teclas com cliques)
+    OoT-KeyboardMouse-Config.exe
+
+  JEITO 2 - SEM O PROGRAMA (so um .bat)
+    INSTALL.bat
+
+Antes de qualquer um: EXTRAIA o zip (botao direito > Extrair Tudo) e FECHE o Lichii por completo.
+Se aparecer "O Windows protegeu o computador": "Mais informacoes" > "Executar assim mesmo".
+
+
+JEITO 1 - PROGRAMA
+------------------
+  1. De dois cliques em OoT-KeyboardMouse-Config.exe.
+  2. Confira a "Lichii data folder" la em cima (se estiver "(not found)": "Change..." e escolha
+     a pasta; no Lichii: File > Open Lichii Folders > Root Data Folder mostra qual e).
+  3. Escolha as teclas nas abas Buttons / Movement / Mouse and camera.
+  4. Clique em Apply e espere "Done".
+  O programa ja instala tudo (patch da camera, helper, icones). Quando voce troca teclas ele
+  tambem redesenha os icones do jogo; para isso pede o .nup do jogo uma vez.
+  Se o programa nao abrir, use o JEITO 2.
+  Para vir com as SUAS teclas (layout do Hookshot): rode o INSTALL.bat uma vez antes (JEITO 2).
+
+
+JEITO 2 - INSTALL.bat
+---------------------
+  De dois cliques em INSTALL.bat. Ele acha a pasta de dados do Lichii, copia tudo para la
+  (patch, helper, icones, teclas) e aplica. No fim aparece "Done".
+  Se pedir uma pasta: Lichii > File > Open Lichii Folders > Root Data Folder, copie o endereco
+  da janela que abrir e cole na janela preta.
+  Se voce ja tinha o OoT-Keyboard-Mouse-Settings.ini, ele e MANTIDO. As teclas desta versao
+  (layout do Hookshot) ficam em OoT-Keyboard-Mouse-Settings.new.ini na pasta de dados:
+  copie esse por cima do outro e de dois cliques em Apply-Settings.bat.
+
+
+PARA JOGAR (toda vez)
+---------------------
+  Abra o jogo no Lichii e clique UMA vez na imagem. So isso.
+  O helper (OoT-MouseCapture) agora liga SOZINHO: o Apply/INSTALL ja o deixa rodando (minimizado na
+  barra de tarefas) e ele volta sozinho a cada vez que o Windows liga. Ele espera o jogo, so age com o
+  jogo na frente e Alt+Tab devolve o mouse normal. Nao precisa abrir nada a mao.
+  O PONTEIRO DO MOUSE SOME sozinho enquanto o jogo esta com o mouse e volta quando voce sai da imagem
+  ou aperta Alt+Tab (hide_cursor = false no arquivo de configuracoes desliga isso).
+  Para desligar o inicio automatico: helper_autostart = false (ou mouse_camera = stick) no
+  OoT-Keyboard-Mouse-Settings.ini e Apply-Settings.bat. Ou apague  OoT-MouseCapture  em
+  shell:startup  (Windows+R, digite shell:startup).
+  ARQUIVO DE DIAGNOSTICO: o helper grava  OoT-MouseCapture-log.txt  na pasta de dados do Lichii
+  (tamanho da imagem, passo do mouse, quando ele pausa e por que, se o ponteiro escapou, travadas do
+  PC). Se a camera nao estiver boa, e so me mandar esse arquivo, sem precisar descrever nada.
+
+
+TECLAS (layout do Hookshot, Nintendo)
+-------------------------------------
+  W A S D = andar (segure Shift para andar devagar)   mouse = camera
+  E = A      Z = B      Espaco = X      Q = Y
+  F = L      R = R      clique direito = ZL      clique esquerdo = ZR
+  Tab = + (menu)      M = - (mapa)      Ctrl = apertar o stick esquerdo      C = apertar o stick direito
+  1 = direcional cima   2 = esquerda   3 = baixo   4 = direita
+  Para mudar: programa, ou edite OoT-Keyboard-Mouse-Settings.ini no Bloco de Notas e de dois
+  cliques em Apply-Settings.bat (com o Lichii fechado).
+
+
+CAMERA NATIVA, VELOCIDADE E mouse_step
+--------------------------------------
+  mouse_camera = native: o mouse gira a camera direto, 1 para 1, como num jogo de PC.
+  O jogo so recebe a posicao do mouse a cada leitura, e o helper vai "dando a volta" no ponteiro para
+  ele nunca bater na borda da imagem. Se o mouse anda muito entre duas leituras, o patch pode
+  confundir "andou muito" com "o helper deu a volta", e a camera engasga ou da pulinhos.
+  AJUSTE AUTOMATICO (novo na v1.4.4): o patch agora usa a velocidade das leituras anteriores para
+  decidir sozinho qual das duas leituras e a certa. Em velocidade normal nada muda; em giro rapido
+  ele acompanha ate umas 4x mais rapido que antes (e uma parada brusca nao gira a camera).
+  mouse_step (padrao 0.5) continua existindo: quantos pixels do jogo vale cada "ponto" do mouse.
+  Com 0.5 e como baixar o DPI pela metade, e a velocidade da camera continua a mesma.
+  - Giros MUITO rapidos ainda engasgam: mouse_step = 0.25
+  - Ficou serrilhado em movimentos lentos: mouse_step = 0.75 (ou 1.0 para desligar)
+  Depois de mudar: Apply-Settings.bat (ele reinicia o helper sozinho).
+  (O botao Apply do programa mantem o valor que esta no arquivo modelo: 0.5. Para outro valor,
+   edite o arquivo e use o Apply-Settings.bat.)
+  Camera no modo "stick" (sem helper): mouse_camera = stick e Apply-Settings.bat.
+
+
+ICONES
+------
+  As imagens das teclas dentro do jogo (HUD, menus, "Basic Controls") vem desenhadas para o
+  layout ORIGINAL do mod. As teclas acima funcionam normalmente, mas alguns icones podem mostrar
+  a tecla antiga. O PROGRAMA redesenha os icones para as suas teclas (precisa do .nup do jogo).
+  A tela "Basic Controls" continua com o layout padrao.
+
+
+DEU ERRO?
+---------
+  "Lichii is open": feche o Lichii por completo e rode de novo.
+  "A file of the mod is missing": voce rodou de dentro do zip. Extraia primeiro.
+  A camera trava/engasga: veja "CAMERA NATIVA" acima (mouse_step).
+  O helper diz "Waiting for the game window": abra o jogo; o titulo da janela precisa ter "Ocarina".
+  Icones continuam do Switch/PlayStation: feche e abra o jogo; so pode haver uma pasta
+     ButtonPrompts- em load\0400486024DEC000 (o instalador guarda as outras em mod-backups).
+
+
+DESINSTALAR
+-----------
+  Feche o Lichii. No programa: "Undo mod changes...". Ou apague na pasta de dados
+  load\0400486024DEC000\ButtonPrompts-KeyboardMouse e load\0400486024DEC000\MouseCamera-Native e
+  copie config\qt-config.ini.pre-keyboard-mouse por cima de config\qt-config.ini.
+
+Projeto de fa, sem ligacao com a Nintendo nem com o Lichii/Eden. Os arquivos de icones vem do jogo e
+continuam sendo da Nintendo: use-os so com uma copia que voce tem.
